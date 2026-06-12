@@ -128,7 +128,7 @@ def do_login(ra, senha, cf=None):
     raise Exception('Falha ao trocar token após 5 tentativas')
 
 def do_get_tasks(token, captcha, cf=None):
-    cookies = 
+    cookies = {'cf_clearance': cf} if cf else {}
     s, d = req(f'{BASE}/p/https://edusp-api.ip.tv/room/user',
         headers=headers_auth(token, captcha), cookies=cookies)
     targets = []
